@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60" fill="none">
+  <!-- Hosanna School of Catering & Fashion Design emblem -->
+  <g transform="translate(10, 8)">
+    <rect
+      x="0"
+      y="0"
+      width="44"
+      height="44"
+      rx="8"
+      fill="#0B3D2E"
+      stroke="#C6A15B"
+      stroke-width="1.5"
+    />
+
+    <!-- Stylized H / craft motif -->
+    <path
+      d="M14 12V32M30 12V32"
+      stroke="#E8D5A8"
+      stroke-width="2.5"
+      stroke-linecap="round"
+    />
+
+    <path
+      d="M14 22H30"
+      stroke="#C6A15B"
+      stroke-width="2"
+    />
+
+    <circle
+      cx="22"
+      cy="15"
+      r="1.5"
+      fill="#C6A15B"
+    />
+
+    <circle
+      cx="22"
+      cy="29"
+      r="1.5"
+      fill="#C6A15B"
+    />
+
+    <path
+      d="M22 17V20M22 24V27"
+      stroke="#E8D5A8"
+      stroke-width="1"
+      stroke-linecap="round"
+    />
+  </g>
+
+  <!-- Brand typography -->
+  <text
+    x="64"
+    y="27"
+    font-family="'Playfair Display', Georgia, serif"
+    font-size="20"
+    font-weight="700"
+    letter-spacing="0.12em"
+    fill="#0B3D2E"
+  >
+    HOSANNA
+  </text>
+
+  <text
+    x="65"
+    y="41"
+    font-family="system-ui, -apple-system, sans-serif"
+    font-size="8.5"
+    font-weight="600"
+    letter-spacing="0.22em"
+    fill="#A67C2E"
+  >
+    SCHOOL OF CATERING &amp; FASHION
+  </text>
+
+  <text
+    x="65"
+    y="49"
+    font-family="system-ui, -apple-system, sans-serif"
+    font-size="7"
+    font-weight="500"
+    letter-spacing="0.15em"
+    fill="#6B6B6B"
+  >
+    ABA · ABIA STATE
+  </text>
+</svg>

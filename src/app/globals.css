@@ -1,26 +1,235 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* Hosanna typography */
+  --font-sans: "Inter Variable", Inter, sans-serif;
+  --font-heading: "Playfair Display Variable", "Playfair Display", serif;
+
+  /* Hosanna brand colors */
+  --color-emerald-noir: #0b3d2e;
+  --color-deep-forest: #123f33;
+  --color-royal-green: #145a43;
+  --color-palm-green: #2e7d5b;
+
+  --color-champagne-gold: #c6a15b;
+  --color-burnished-gold: #a67c2e;
+  --color-pale-gold: #e8d5a8;
+
+  --color-terracotta: #b65a3c;
+  --color-adire-indigo: #1f3a5f;
+  --color-hibiscus: #a32638;
+
+  --color-warm-ivory: #f8f5ef;
+  --color-linen: #efe9e0;
+  --color-ink: #0e0e0e;
+  --color-charcoal: #1a1a1a;
+  --color-slate: #4a4a4a;
+
+  /* shadcn semantic colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-xl: 8px;
+  --radius-2xl: 12px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Light theme — Hosanna default */
+:root {
+  --background: #f8f5ef;
+  --foreground: #0e0e0e;
+
+  --card: #ffffff;
+  --card-foreground: #0e0e0e;
+
+  --popover: #ffffff;
+  --popover-foreground: #0e0e0e;
+
+  --primary: #0b3d2e;
+  --primary-foreground: #f8f5ef;
+
+  --secondary: #efe9e0;
+  --secondary-foreground: #0b3d2e;
+
+  --muted: #efe9e0;
+  --muted-foreground: #4a4a4a;
+
+  --accent: #c6a15b;
+  --accent-foreground: #0e0e0e;
+
+  --destructive: #a32638;
+
+  --border: #efe9e0;
+  --input: #efe9e0;
+  --ring: #0b3d2e;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    font-family: "Inter Variable", Inter, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter Variable", Inter, sans-serif;
+    margin: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family:
+      "Playfair Display Variable",
+      "Playfair Display",
+      Georgia,
+      serif;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  ::selection {
+    background: #c6a15b;
+    color: #0b3d2e;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* -------------------------------------------------------
+   Hosanna utility classes
+   ------------------------------------------------------- */
+
+@layer components {
+  .hosanna-container {
+    width: min(100% - 32px, 1280px);
+    margin-inline: auto;
+  }
+
+  .editorial-heading {
+    font-family:
+      "Playfair Display Variable",
+      "Playfair Display",
+      Georgia,
+      serif;
+    letter-spacing: -0.02em;
+  }
+
+  .eyebrow {
+    font-family: "Inter Variable", Inter, sans-serif;
+    font-size: 0.6875rem;
+    line-height: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .gold-rule {
+    height: 1px;
+    width: 48px;
+    background: #c6a15b;
+  }
+
+  .atelier-card {
+    border: 1px solid #efe9e0;
+    border-radius: 4px;
+    background: #ffffff;
+    padding: 20px;
+  }
+
+  .primary-button {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 4px;
+    background: #0b3d2e;
+    padding: 14px 24px;
+    color: #f8f5ef;
+    font-size: 14px;
+    font-weight: 600;
+    transition:
+      background-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .primary-button:hover {
+    background: #145a43;
+  }
+
+  .primary-button:active {
+    transform: translateY(1px);
+  }
+
+  .secondary-button {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid #a67c2e;
+    border-radius: 4px;
+    background: transparent;
+    padding: 14px 24px;
+    color: #0b3d2e;
+    font-size: 14px;
+    font-weight: 600;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease;
+  }
+
+  .secondary-button:hover {
+    background: #efe9e0;
+  }
+}
+
+/* Reduced-motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
