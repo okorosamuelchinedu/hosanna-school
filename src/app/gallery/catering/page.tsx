@@ -1,180 +1,63 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { SiteHeader } from "@/components/navigation/site-header";
+import { PageHero } from "@/components/ui/page-hero";
+import { PageCTA } from "@/components/ui/page-cta";
+import { FadeUp } from "@/components/ui/fade-up";
 
-const cateringImages = [
-  {
-    src: "/images/hero-catering.png",
-    alt: "Culinary training and catering practice",
-    title: "Kitchen Practice",
-    category: "Culinary Training",
-  },
-  {
-    src: "/images/hero-catering.png",
-    alt: "Catering and culinary workshop",
-    title: "Hands-On Learning",
-    category: "Catering",
-  },
-  {
-    src: "/images/hero-catering.png",
-    alt: "Practical food preparation training",
-    title: "Built Through Practice",
-    category: "Practical Skills",
-  },
+export const metadata = { title: "Gallery / Catering" };
+
+const images = [
+  { src: "/images/hero-catering.png", alt: "Culinary training and catering practice at Hosanna", title: "Kitchen Practice",      category: "Culinary Training" },
+  { src: "/images/hero-catering.png", alt: "Catering workshop at Hosanna School",                title: "Hands-On Learning",    category: "Catering" },
+  { src: "/images/hero-catering.png", alt: "Practical food preparation training at Hosanna",     title: "Built Through Practice",category: "Practical Skills" },
 ];
 
 export default function CateringGalleryPage() {
   return (
-    <>
-      <SiteHeader />
+    <div className="bg-off-white">
+      <PageHero
+        eyebrow="Gallery / Catering"
+        heading="Create with flavour."
+        subheading="A visual look at catering, culinary, pastry and events training at Hosanna School."
+        backHref="/gallery"
+        backLabel="Back to Gallery"
+      />
 
-      <main className="bg-warm-ivory">
-        {/* Hero */}
-        <section className="border-b border-linen">
-          <div className="hosanna-container py-16 sm:py-20 lg:py-28">
-            <Link
-              href="/gallery"
-              className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-emerald-noir transition-colors hover:text-burnished-gold"
-            >
-              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-              Back to Gallery
-            </Link>
-
-            <p className="eyebrow mb-4">GALLERY / CATERING</p>
-
-            <h1 className="editorial-heading max-w-4xl text-4xl sm:text-5xl lg:text-6xl">
-              Create with flavour.
-            </h1>
-
-            <div className="mt-6 max-w-2xl">
-              <p className="text-base leading-7 text-slate sm:text-lg">
-                A visual look at the practical discipline behind catering and
-                culinary training at Hosanna School of Catering & Fashion
-                Design.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Gallery */}
-        <section className="hosanna-container py-16 sm:py-20 lg:py-24">
-          <div className="grid gap-6 md:grid-cols-2">
-            {cateringImages.map((image, index) => (
-              <article
-                key={`${image.title}-${index}`}
-                className={`group overflow-hidden border border-linen bg-white ${
-                  index === 0 ? "md:col-span-2" : ""
-                }`}
-              >
-                <div
-                  className={`relative overflow-hidden ${
-                    index === 0
-                      ? "aspect-[16/8]"
-                      : "aspect-[4/3]"
-                  }`}
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    priority={index === 0}
-                    sizes={
-                      index === 0
-                        ? "(max-width: 768px) 100vw, 100vw"
-                        : "(max-width: 768px) 100vw, 50vw"
-                    }
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                  />
-                </div>
-
-                <div className="p-5 sm:p-6">
-                  <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-burnished-gold">
-                    {image.category}
-                  </p>
-
-                  <h2 className="font-display text-2xl text-emerald-noir">
-                    {image.title}
-                  </h2>
-                </div>
-              </article>
+      <section className="section-pad bg-white">
+        <div className="hosanna-container">
+          <div className="grid gap-5 md:grid-cols-2">
+            {images.map((image, i) => (
+              <FadeUp key={i} delay={i * 60}>
+                <article className={`group overflow-hidden rounded-xl ${i === 0 ? "md:col-span-2" : ""}`}>
+                  <div className={`relative overflow-hidden rounded-xl ${i === 0 ? "aspect-[16/8]" : "aspect-4/5"}`}>
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      priority={i === 0}
+                      sizes={i === 0 ? "100vw" : "(max-width:767px) 100vw, 50vw"}
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+                    <div className="absolute inset-0 bg-black/35" />
+                    <div className="absolute bottom-5 left-5 text-white">
+                      <p className="eyebrow-light">{image.category}</p>
+                      <p className="mt-1 text-[17px] font-semibold">{image.title}</p>
+                    </div>
+                  </div>
+                </article>
+              </FadeUp>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Editorial note */}
-        <section className="border-y border-linen bg-linen/40">
-          <div className="hosanna-container py-14 sm:py-16">
-            <div className="grid gap-8 lg:grid-cols-[1fr_2fr] lg:items-start">
-              <div>
-                <p className="eyebrow">EDITORIAL NOTE</p>
-              </div>
-
-              <div className="max-w-3xl">
-                <h2 className="editorial-heading text-3xl sm:text-4xl">
-                  Learn by doing.
-                </h2>
-
-                <p className="mt-5 text-base leading-7 text-slate">
-                  Catering is presented here as a practical craft: preparation,
-                  technique, presentation and the confidence that comes from
-                  repeated hands-on practice.
-                </p>
-
-                <div className="mt-8 h-px w-24 bg-burnished-gold" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Demo notice */}
-        <section className="hosanna-container py-12 sm:py-16">
-          <div className="border border-dashed border-burnished-gold bg-pale-gold/30 p-6 sm:p-8">
-            <p className="eyebrow text-burnished-gold">
-              DEMO PHOTOGRAPHY
-            </p>
-
-            <p className="mt-3 max-w-3xl text-sm leading-6 text-charcoal">
-              These images are temporary editorial placeholders for the
-              website demonstration. Before production launch, they should be
-              replaced with approved Hosanna School photography and clearly
-              identified student work.
-            </p>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="bg-emerald-noir text-warm-ivory">
-          <div className="hosanna-container py-16 sm:py-20">
-            <div className="max-w-3xl">
-              <p className="eyebrow text-pale-gold">
-                CONTINUE EXPLORING
-              </p>
-
-              <h2 className="editorial-heading mt-4 text-3xl text-warm-ivory sm:text-4xl lg:text-5xl">
-                Your next skill can start here.
-              </h2>
-
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/programmes"
-                  className="primary-button inline-flex items-center justify-center gap-2"
-                >
-                  Explore Programmes
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-
-                <Link
-                  href="/apply"
-                  className="secondary-button inline-flex items-center justify-center border-pale-gold text-warm-ivory hover:bg-warm-ivory hover:text-emerald-noir"
-                >
-                  Apply Now
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-    </>
+      <PageCTA
+        eyebrow="Continue Exploring"
+        heading="Your next skill can start here."
+        primaryLabel="Apply Now"
+        primaryHref="/apply"
+        secondaryLabel="Explore Programmes"
+        secondaryHref="/programmes"
+      />
+    </div>
   );
 }
