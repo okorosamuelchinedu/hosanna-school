@@ -1,27 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
-import { SiteHeader } from "@/components/navigation/site-header";
+import { PageHero } from "@/components/ui/page-hero";
+import { FadeUp } from "@/components/ui/fade-up";
+import { PageCTA } from "@/components/ui/page-cta";
+
+export const metadata = { title: "Fashion & Design" };
 
 const pathways = [
-  {
-    number: "01",
-    title: "Fashion Training",
-    text: "Develop practical fashion skills through guided learning, garment development and repeated hands-on practice.",
-    href: "/fashion/training",
-  },
-  {
-    number: "02",
-    title: "Tailoring",
-    text: "Build practical tailoring skills around measurements, construction, fitting and finishing.",
-    href: "/fashion/tailoring",
-  },
-  {
-    number: "03",
-    title: "Garment Construction",
-    text: "Learn how design ideas and fabric become finished garments through practical construction techniques.",
-    href: "/fashion/garment-construction",
-  },
+  { n: "01", title: "Fashion Training",     text: "Develop practical fashion skills through guided learning, garment development and hands-on practice.", href: "/fashion/training" },
+  { n: "02", title: "Tailoring",            text: "Build practical tailoring skills around measurements, construction, fitting and finishing.", href: "/fashion/tailoring" },
+  { n: "03", title: "Garment Construction", text: "Learn how design ideas and fabric become finished garments through practical construction.", href: "/fashion/garment-construction" },
 ];
 
 const skills = [
@@ -35,253 +24,123 @@ const skills = [
 
 export default function FashionPage() {
   return (
-    <>
-      <SiteHeader />
+    <div className="bg-off-white">
+      <PageHero
+        eyebrow="Fashion and Tailoring"
+        heading="Create with precision."
+        subheading="Practical fashion training designed to help you develop technique, construction skills and confidence through making."
+        imageSrc="/images/hero-fashion.png"
+        imageAlt="Fashion design training at Hosanna School"
+      />
 
-      <main className="bg-warm-ivory">
-        {/* Hero */}
-        <section className="bg-emerald-noir text-warm-ivory">
-          <div className="grid lg:grid-cols-2">
-            <div className="flex items-center">
-              <div className="hosanna-container w-full py-16 sm:py-20 lg:py-24 lg:pr-10">
-                <div className="max-w-xl">
-                  <p className="eyebrow text-pale-gold">
-                    FASHION & TAILORING
-                  </p>
-
-                  <h1 className="editorial-heading mt-5 text-4xl text-warm-ivory sm:text-5xl lg:text-6xl">
-                    Create with precision.
-                  </h1>
-
-                  <p className="mt-6 text-base leading-7 text-warm-ivory/80 sm:text-lg">
-                    Practical fashion training designed to help you develop
-                    technique, construction skills and confidence through
-                    making.
-                  </p>
-
-                  <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                    <Link
-                      href="/fashion/training"
-                      className="primary-button bg-pale-gold text-emerald-noir hover:bg-champagne-gold"
-                    >
-                      Explore Training
-                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                    </Link>
-
-                    <Link
-                      href="/apply"
-                      className="inline-flex min-h-12 items-center justify-center rounded-sm border border-white/25 px-6 py-3 text-sm font-semibold text-warm-ivory transition-colors hover:bg-white/10"
-                    >
-                      Apply Now
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative min-h-[420px] lg:min-h-[650px]">
-              <Image
-                src="/images/hero-fashion.png"
-                alt="Editorial image representing fashion design and tailoring training"
-                fill
-                priority
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Introduction */}
-        <section className="py-16 sm:py-20 lg:py-28">
-          <div className="hosanna-container">
-            <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-              <div className="lg:col-span-5">
-                <p className="eyebrow text-adire-indigo">
-                  THE DISCIPLINE
-                </p>
-
-                <h2 className="editorial-heading mt-4 text-3xl sm:text-4xl">
+      {/* Discipline intro */}
+      <section className="section-pad bg-white">
+        <div className="hosanna-container">
+          <FadeUp>
+            <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
+              <div>
+                <p className="eyebrow">The Discipline</p>
+                <h2 className="section-heading mt-3">
                   From an idea to a finished garment.
                 </h2>
               </div>
-
-              <div className="lg:col-span-7">
-                <p className="max-w-2xl text-[15px] leading-7 text-slate sm:text-base">
-                  Fashion design combines creativity with technical
-                  precision. Measurements, construction, fitting and finishing
-                  all contribute to the quality of the final garment.
+              <div>
+                <p className="text-[17px] leading-[1.7] text-ink-600">
+                  Fashion design combines creativity with technical precision. Measurements, construction, fitting and finishing all contribute to the quality of the final garment.
                 </p>
-
                 <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                  {skills.map((skill, index) => (
-                    <div
-                      key={skill}
-                      className="flex items-center gap-3 border-b border-linen py-4"
-                    >
-                      <Check
-                        className="h-4 w-4 shrink-0 text-champagne-gold"
-                        aria-hidden="true"
-                      />
-
-                      <span className="text-sm text-charcoal">
-                        {skill}
-                      </span>
-
-                      <span className="ml-auto font-serif text-xs text-slate">
-                        0{index + 1}
-                      </span>
+                  {skills.map((s, i) => (
+                    <div key={s} className="flex items-center gap-3 border-b border-line py-4">
+                      <Check className="h-4 w-4 shrink-0 text-brand-700" aria-hidden="true" />
+                      <span className="flex-1 text-[15px] text-ink-900">{s}</span>
+                      <span className="text-[12px] font-semibold text-ink-400">0{i + 1}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </FadeUp>
+        </div>
+      </section>
 
-        {/* Pathways */}
-        <section className="border-y border-linen bg-white py-16 sm:py-20 lg:py-24">
-          <div className="hosanna-container">
+      {/* Pathways */}
+      <section className="section-pad bg-off-white">
+        <div className="hosanna-container">
+          <FadeUp>
             <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="eyebrow text-adire-indigo">
-                  FASHION PATHWAYS
-                </p>
-
-                <h2 className="editorial-heading mt-4 text-3xl sm:text-4xl">
-                  Find your area of interest.
-                </h2>
+                <p className="eyebrow">Fashion Pathways</p>
+                <h2 className="section-heading mt-3">Find your area of interest.</h2>
               </div>
-
-              <p className="max-w-md text-sm leading-6 text-slate">
-                Explore different areas of practical fashion design and
-                garment development.
+              <p className="max-w-[40ch] text-[16px] leading-[1.7] text-ink-600 sm:text-right">
+                Explore different areas of practical fashion design and garment development.
               </p>
             </div>
+          </FadeUp>
 
-            <div className="mt-10 divide-y divide-linen border-y border-linen">
-              {pathways.map((pathway) => (
+          <div className="mt-12 divide-y divide-line border-t border-line">
+            {pathways.map((p, i) => (
+              <FadeUp key={p.n} delay={i * 60}>
                 <Link
-                  key={pathway.number}
-                  href={pathway.href}
-                  className="group grid gap-5 py-7 transition-colors hover:bg-linen/30 md:grid-cols-12 md:gap-8 md:px-5"
+                  href={p.href}
+                  className="group grid gap-5 py-8 transition-colors hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 rounded md:grid-cols-[40px_1fr_1.6fr_40px] md:items-center md:gap-10"
                 >
-                  <div className="md:col-span-1">
-                    <span className="font-serif text-lg text-champagne-gold">
-                      {pathway.number}
-                    </span>
-                  </div>
-
-                  <div className="md:col-span-4">
-                    <h3 className="font-serif text-xl text-emerald-noir sm:text-2xl">
-                      {pathway.title}
-                    </h3>
-                  </div>
-
-                  <div className="md:col-span-6">
-                    <p className="max-w-xl text-sm leading-6 text-slate">
-                      {pathway.text}
-                    </p>
-                  </div>
-
-                  <div className="md:col-span-1 md:flex md:justify-end">
-                    <ArrowRight
-                      className="h-5 w-5 text-emerald-noir transition-transform group-hover:translate-x-1"
-                      aria-hidden="true"
-                    />
-                  </div>
+                  <span className="text-[13px] font-semibold text-ink-400">{p.n}</span>
+                  <h3 className="text-[17px] font-semibold text-ink-900 group-hover:text-brand-700">{p.title}</h3>
+                  <p className="text-[15px] leading-[1.6] text-ink-600">{p.text}</p>
+                  <ArrowRight className="h-5 w-5 text-ink-400 transition-transform group-hover:translate-x-1 group-hover:text-brand-700 hidden md:block" aria-hidden="true" />
                 </Link>
-              ))}
-            </div>
+              </FadeUp>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Craft Feature */}
-        <section className="py-16 sm:py-20 lg:py-28">
-          <div className="hosanna-container">
-            <div className="grid overflow-hidden border border-linen bg-white lg:grid-cols-2">
-              <div className="relative min-h-[360px] lg:min-h-[540px]">
+      {/* Craft feature */}
+      <section className="section-pad bg-warm-50">
+        <div className="hosanna-container">
+          <FadeUp>
+            <div className="grid gap-14 lg:grid-cols-2 lg:items-center lg:gap-20">
+              <div className="relative aspect-4/5 overflow-hidden rounded-xl lg:aspect-auto lg:h-145">
                 <Image
                   src="/images/hero-fashion.png"
-                  alt="Fashion design and tailoring editorial image"
+                  alt="Fashion and tailoring practical training"
                   fill
+                  sizes="(max-width:1023px) 100vw, 50vw"
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
+                <div className="absolute inset-0 bg-black/35" />
               </div>
-
-              <div className="flex items-center p-7 sm:p-10 lg:p-14 xl:p-16">
-                <div>
-                  <p className="eyebrow text-adire-indigo">
-                    PRACTICAL CRAFT
-                  </p>
-
-                  <h2 className="editorial-heading mt-4 text-3xl sm:text-4xl">
-                    Learn through cutting, construction and refinement.
-                  </h2>
-
-                  <p className="mt-5 text-sm leading-6 text-slate sm:text-base">
-                    Strong fashion skills develop through practice. Learners
-                    can work through the process of creating garments while
-                    developing accuracy, technique and attention to detail.
-                  </p>
-
-                  <div className="mt-7 border-l-2 border-champagne-gold pl-5">
-                    <p className="font-serif text-lg text-emerald-noir">
-                      “Learn the skill. Develop the craft.”
-                    </p>
-                  </div>
-
-                  <Link
-                    href="/fashion/training"
-                    className="secondary-button mt-8"
-                  >
-                    Explore Fashion Training
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="bg-emerald-noir py-16 text-warm-ivory sm:py-20 lg:py-24">
-          <div className="hosanna-container">
-            <div className="mx-auto max-w-3xl text-center">
-              <p className="eyebrow text-pale-gold">
-                READY TO START?
-              </p>
-
-              <h2 className="editorial-heading mt-4 text-3xl text-warm-ivory sm:text-4xl lg:text-5xl">
-                Turn practice into craft.
-              </h2>
-
-              <p className="mx-auto mt-5 max-w-xl text-sm leading-6 text-warm-ivory/70 sm:text-base">
-                Explore the training options or learn more about how to begin
-                your application.
-              </p>
-
-              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                <Link
-                  href="/fashion/training"
-                  className="primary-button bg-pale-gold text-emerald-noir hover:bg-champagne-gold"
-                >
-                  Explore Training
+              <div>
+                <p className="eyebrow">Practical Craft</p>
+                <h2 className="section-heading mt-3">
+                  Learn through cutting, construction and refinement.
+                </h2>
+                <p className="mt-6 text-[17px] leading-[1.7] text-ink-600">
+                  Strong fashion skills develop through practice. Learners work through the process of creating garments while developing accuracy, technique and attention to detail.
+                </p>
+                <blockquote className="mt-8 border-l-2 border-brand-700 pl-5">
+                  <p className="text-[17px] font-semibold text-ink-900">"Learn the skill. Develop the craft."</p>
+                </blockquote>
+                <Link href="/fashion/training" className="btn-primary mt-8 inline-flex">
+                  Explore Fashion Training
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
-
-                <Link
-                  href="/admissions"
-                  className="inline-flex min-h-12 items-center justify-center rounded-sm border border-white/30 px-6 py-3 text-sm font-semibold text-warm-ivory transition-colors hover:bg-white/10"
-                >
-                  Admissions
-                </Link>
               </div>
             </div>
-          </div>
-        </section>
-      </main>
-    </>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <PageCTA
+        eyebrow="Ready to Start?"
+        heading="Turn practice into craft."
+        primaryLabel="Apply Now"
+        primaryHref="/apply"
+        secondaryLabel="Admissions"
+        secondaryHref="/admissions"
+      />
+    </div>
   );
 }
