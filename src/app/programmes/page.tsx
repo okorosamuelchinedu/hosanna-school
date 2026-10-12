@@ -1,354 +1,237 @@
+﻿import Link from "next/link";
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
-import { SiteHeader } from "@/components/navigation/site-header";
+import { PageHero } from "@/components/ui/page-hero";
+import { FadeUp } from "@/components/ui/fade-up";
+import { PageCTA } from "@/components/ui/page-cta";
+
+export const metadata = { title: "Programmes" };
 
 const cateringProgrammes = [
-  {
-    number: "01",
-    title: "Catering & Culinary",
-    description:
-      "Explore practical catering and culinary skills through preparation, technique, presentation and hands-on practice.",
-    href: "/programmes/catering-culinary",
-  },
-  {
-    number: "02",
-    title: "Pastry & Baking",
-    description:
-      "Develop practical skills around pastry, baking, preparation and presentation in a hands-on learning environment.",
-    href: "/programmes/pastry-baking",
-  },
-  {
-    number: "03",
-    title: "Events & Catering",
-    description:
-      "Build practical knowledge for preparing, organising and presenting food for events and hospitality settings.",
-    href: "/programmes/events-catering",
-  },
+  { n: "01", title: "Catering & Culinary",  desc: "Food preparation, cooking techniques, presentation and kitchen operations.", href: "/programmes/catering-culinary" },
+  { n: "02", title: "Pastry & Baking",       desc: "Pastry dough, cake baking, bread and presentation skills.",               href: "/programmes/pastry-baking" },
+  { n: "03", title: "Events & Catering",     desc: "Practical food service skills for events and hospitality settings.",       href: "/programmes/events-catering" },
 ];
 
 const fashionProgrammes = [
-  {
-    number: "01",
-    title: "Fashion Design & Training",
-    description:
-      "Build practical fashion skills through guided learning, garment development and repeated hands-on practice.",
-    href: "/programmes/fashion-design",
-  },
-  {
-    number: "02",
-    title: "Tailoring",
-    description:
-      "Develop practical tailoring skills with attention to measurements, construction, fitting and finishing.",
-    href: "/programmes/tailoring",
-  },
-  {
-    number: "03",
-    title: "Garment Construction",
-    description:
-      "Learn the principles of turning design ideas and fabric into finished garments through practical construction.",
-    href: "/programmes/garment-construction",
-  },
+  { n: "04", title: "Fashion Design",        desc: "Design concepts, fabric selection, pattern making and garment construction.", href: "/programmes/fashion-design" },
+  { n: "05", title: "Tailoring",             desc: "Measurements, cutting, construction, fitting and professional finishing.",    href: "/programmes/tailoring" },
+  { n: "06", title: "Garment Construction",  desc: "Pattern to finished garment, every technique in between.",                   href: "/programmes/garment-construction" },
+];
+
+const otherProgrammes = [
+  { n: "07", title: "Millinery",             desc: "Hat-making and creative headwear design through practical construction.", href: "/programmes/millinery" },
+  { n: "08", title: "Hairdressing",          desc: "Cutting, styling, treatment and client service for the modern salon.",    href: "/programmes/hairdressing" },
 ];
 
 const learningPoints = [
   "Hands-on practical training",
   "Guided skill development",
   "Repeated practice and refinement",
-  "Creative confidence",
+  "Creative confidence that grows with you",
 ];
 
 export default function ProgrammesPage() {
   return (
-    <>
-      <SiteHeader />
+    <div className="bg-off-white">
+      <PageHero
+        eyebrow="Programmes"
+        heading="Practical skills. Creative confidence."
+        subheading="Eight areas of practical training in catering, fashion, hairdressing, millinery and more. All designed around learning by doing."
+      />
 
-      <main className="bg-warm-ivory">
-        {/* Hero */}
-        <section className="bg-emerald-noir text-warm-ivory">
-          <div className="hosanna-container py-16 sm:py-20 lg:py-28">
-            <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-8">
-                <p className="eyebrow text-pale-gold">
-                  PROGRAMMES
-                </p>
-
-                <h1 className="editorial-heading mt-5 max-w-4xl text-4xl text-warm-ivory sm:text-5xl lg:text-6xl">
-                  Practical skills.
-                  <br />
-                  Creative confidence.
-                </h1>
-
-                <p className="mt-6 max-w-2xl text-base leading-7 text-warm-ivory/80 sm:text-lg">
-                  Explore practical training across catering, culinary,
-                  fashion and tailoring — designed around learning by doing.
-                </p>
-              </div>
-
-              <div className="lg:col-span-4 lg:border-l lg:border-white/15 lg:pl-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-pale-gold">
-                  HOSANNA SCHOOL
-                </p>
-
-                <p className="mt-3 text-sm leading-6 text-warm-ivory/70">
-                  Aba, Abia State · Nigeria
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Introduction */}
-        <section className="py-14 sm:py-18 lg:py-24">
-          <div className="hosanna-container">
-            <div className="grid gap-8 lg:grid-cols-12 lg:gap-16">
-              <div className="lg:col-span-5">
-                <p className="eyebrow">LEARN BY DOING</p>
-
-                <h2 className="editorial-heading mt-4 text-3xl sm:text-4xl">
+      {/* Intro */}
+      <section className="section-pad bg-white">
+        <div className="hosanna-container">
+          <FadeUp>
+            <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
+              <div>
+                <p className="eyebrow">Learn by Doing</p>
+                <h2 className="section-heading mt-3">
                   Training built around practical development.
                 </h2>
               </div>
+              <p className="text-[17px] leading-[1.7] text-ink-600 lg:pt-2">
+                Hosanna brings together creative disciplines under one practical learning philosophy. Each area gives learners room to develop technical skills, practise repeatedly and build confidence through making.
+              </p>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
 
-              <div className="lg:col-span-7">
-                <p className="max-w-2xl text-[15px] leading-7 text-slate sm:text-base">
-                  Hosanna brings together two creative disciplines under one
-                  practical learning philosophy: catering and fashion design.
-                  Each area gives learners room to develop technical skills,
-                  practise repeatedly and build confidence through making.
-                </p>
+      {/* Catering section */}
+      <section className="section-pad bg-off-white" aria-label="Catering programmes">
+        <div className="hosanna-container">
+          <FadeUp>
+            <div className="grid gap-14 lg:grid-cols-2 lg:items-center lg:gap-20">
+              <div className="relative aspect-4/5 overflow-hidden rounded-xl lg:aspect-auto lg:h-155">
+                <Image
+                  src="/images/hero-catering.png"
+                  alt="Catering training at Hosanna School"
+                  fill
+                  sizes="(max-width:1023px) 100vw, 50vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black/40" />
+                <div className="absolute bottom-6 left-6">
+                  <span className="inline-flex items-center rounded-full bg-black/50 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-white/85 backdrop-blur-sm">
+                    Catering
+                  </span>
+                </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Catering */}
-        <section className="border-y border-linen bg-white">
-          <div className="grid lg:grid-cols-2">
-            <div className="relative min-h-[360px] lg:min-h-[600px]">
-              <Image
-                src="/images/hero-catering.png"
-                alt="Editorial image representing catering and culinary training"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-
-            <div className="flex items-center">
-              <div className="w-full p-7 sm:p-10 lg:p-14 xl:p-20">
-                <p className="eyebrow text-terracotta">
-                  CATERING
+              <div>
+                <p className="eyebrow">Catering Programmes</p>
+                <h2 className="section-heading mt-3">Create with flavour.</h2>
+                <p className="mt-5 text-[17px] leading-[1.7] text-ink-600">
+                  Develop practical catering, culinary, pastry and events skills through preparation, technique and hands-on practice.
                 </p>
-
-                <h2 className="editorial-heading mt-4 text-3xl text-emerald-noir sm:text-4xl">
-                  Create with flavour.
-                </h2>
-
-                <p className="mt-5 max-w-xl text-sm leading-6 text-slate sm:text-base">
-                  Develop practical catering and culinary skills through
-                  preparation, technique, presentation and hands-on practice.
-                </p>
-
-                <div className="mt-8 divide-y divide-linen border-y border-linen">
-                  {cateringProgrammes.map((programme) => (
+                <div className="mt-8 divide-y divide-line">
+                  {cateringProgrammes.map((p) => (
                     <Link
-                      key={programme.number}
-                      href={programme.href}
-                      className="group flex gap-4 py-5"
+                      key={p.n}
+                      href={p.href}
+                      className="group flex items-start gap-4 py-5 transition-colors hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 rounded"
                     >
-                      <span className="w-8 shrink-0 font-serif text-sm text-champagne-gold">
-                        {programme.number}
-                      </span>
-
-                      <div className="min-w-0">
-                        <h3 className="font-serif text-lg text-emerald-noir">
-                          {programme.title}
-                        </h3>
-
-                        <p className="mt-2 text-sm leading-6 text-slate">
-                          {programme.description}
-                        </p>
-
-                        <span className="mt-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-emerald-noir">
-                          Explore
-                          <ArrowRight
-                            className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                            aria-hidden="true"
-                          />
-                        </span>
+                      <span className="min-w-[28px] text-[13px] font-semibold text-ink-400">{p.n}</span>
+                      <div className="flex-1">
+                        <p className="text-[15px] font-semibold text-ink-900 group-hover:text-brand-700">{p.title}</p>
+                        <p className="mt-1 text-[14px] leading-[1.6] text-ink-600">{p.desc}</p>
                       </div>
+                      <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-ink-400 transition-transform group-hover:translate-x-1 group-hover:text-brand-700" aria-hidden="true" />
                     </Link>
                   ))}
                 </div>
-
-                <Link
-                  href="/catering"
-                  className="secondary-button mt-8"
-                >
+                <Link href="/catering" className="btn-secondary mt-8 inline-flex">
                   View Catering
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Fashion */}
-        <section className="border-b border-linen bg-linen/40">
-          <div className="grid lg:grid-cols-2">
-            <div className="order-2 flex items-center lg:order-1">
-              <div className="w-full p-7 sm:p-10 lg:p-14 xl:p-20">
-                <p className="eyebrow text-adire-indigo">
-                  FASHION
-                </p>
-
-                <h2 className="editorial-heading mt-4 text-3xl text-emerald-noir sm:text-4xl">
-                  Create with precision.
-                </h2>
-
-                <p className="mt-5 max-w-xl text-sm leading-6 text-slate sm:text-base">
-                  Develop practical fashion and tailoring skills through
-                  construction, fitting, finishing and repeated practice.
-                </p>
-
-                <div className="mt-8 divide-y divide-linen border-y border-linen">
-                  {fashionProgrammes.map((programme) => (
-                    <Link
-                      key={programme.number}
-                      href={programme.href}
-                      className="group flex gap-4 py-5"
-                    >
-                      <span className="w-8 shrink-0 font-serif text-sm text-champagne-gold">
-                        {programme.number}
-                      </span>
-
-                      <div className="min-w-0">
-                        <h3 className="font-serif text-lg text-emerald-noir">
-                          {programme.title}
-                        </h3>
-
-                        <p className="mt-2 text-sm leading-6 text-slate">
-                          {programme.description}
-                        </p>
-
-                        <span className="mt-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-emerald-noir">
-                          Explore
-                          <ArrowRight
-                            className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                            aria-hidden="true"
-                          />
-                        </span>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-
-                <Link
-                  href="/fashion"
-                  className="secondary-button mt-8"
-                >
-                  View Fashion
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative order-1 min-h-[360px] lg:order-2 lg:min-h-[600px]">
-              <Image
-                src="/images/hero-fashion.png"
-                alt="Editorial image representing fashion design and tailoring training"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Learning Experience */}
-        <section className="py-16 sm:py-20 lg:py-28">
-          <div className="hosanna-container">
-            <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-              <div className="lg:col-span-5">
-                <p className="eyebrow">THE LEARNING EXPERIENCE</p>
-
-                <h2 className="editorial-heading mt-4 text-3xl sm:text-4xl">
-                  Skills become stronger through practice.
-                </h2>
-
-                <p className="mt-5 text-[15px] leading-7 text-slate">
-                  The programme structure is centred on practical development
-                  rather than simply reading about a skill.
-                </p>
-              </div>
-
-              <div className="lg:col-span-7">
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {learningPoints.map((point, index) => (
-                    <div
-                      key={point}
-                      className="atelier-card bg-white"
-                    >
-                      <div className="flex items-start justify-between gap-4">
-                        <Check
-                          className="h-5 w-5 shrink-0 text-champagne-gold"
-                          aria-hidden="true"
-                        />
-
-                        <span className="font-serif text-sm text-slate">
-                          0{index + 1}
-                        </span>
-                      </div>
-
-                      <p className="mt-6 font-serif text-lg text-emerald-noir">
-                        {point}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Programme Note */}
-        <section className="border-y border-linen bg-emerald-noir py-14 text-warm-ivory sm:py-18 lg:py-20">
-          <div className="hosanna-container">
-            <div className="mx-auto max-w-3xl text-center">
-              <p className="eyebrow text-pale-gold">
-                FIND YOUR DIRECTION
-              </p>
-
-              <h2 className="editorial-heading mt-4 text-3xl text-warm-ivory sm:text-4xl">
-                Choose a skill.
-                <br />
-                Start building your craft.
-              </h2>
-
-              <p className="mx-auto mt-5 max-w-xl text-sm leading-6 text-warm-ivory/70 sm:text-base">
-                Explore the areas of training that interest you, then learn
-                more about admissions and how to begin.
-              </p>
-
-              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                <Link
-                  href="/admissions"
-                  className="primary-button bg-pale-gold text-emerald-noir hover:bg-champagne-gold"
-                >
-                  Admissions
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
-
-                <Link
-                  href="/apply"
-                  className="inline-flex min-h-12 items-center justify-center rounded-sm border border-white/30 px-6 py-3 text-sm font-semibold text-warm-ivory transition-colors hover:bg-white/10"
-                >
-                  Apply Now
-                </Link>
               </div>
             </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* Fashion section */}
+      <section className="section-pad bg-warm-50" aria-label="Fashion programmes">
+        <div className="hosanna-container">
+          <FadeUp>
+            <div className="grid gap-14 lg:grid-cols-2 lg:items-center lg:gap-20">
+              <div className="lg:order-2">
+                <p className="eyebrow">Fashion Programmes</p>
+                <h2 className="section-heading mt-3">Create with precision.</h2>
+                <p className="mt-5 text-[17px] leading-[1.7] text-ink-600">
+                  Develop fashion design, tailoring, millinery and garment-making skills through construction, fitting and creative practice.
+                </p>
+                <div className="mt-8 divide-y divide-line">
+                  {fashionProgrammes.map((p) => (
+                    <Link
+                      key={p.n}
+                      href={p.href}
+                      className="group flex items-start gap-4 py-5 transition-colors hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 rounded"
+                    >
+                      <span className="min-w-[28px] text-[13px] font-semibold text-ink-400">{p.n}</span>
+                      <div className="flex-1">
+                        <p className="text-[15px] font-semibold text-ink-900 group-hover:text-brand-700">{p.title}</p>
+                        <p className="mt-1 text-[14px] leading-[1.6] text-ink-600">{p.desc}</p>
+                      </div>
+                      <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-ink-400 transition-transform group-hover:translate-x-1 group-hover:text-brand-700" aria-hidden="true" />
+                    </Link>
+                  ))}
+                </div>
+                <Link href="/fashion" className="btn-secondary mt-8 inline-flex">
+                  View Fashion
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+              <div className="relative aspect-4/5 overflow-hidden rounded-xl lg:order-1 lg:aspect-auto lg:h-155">
+                <Image
+                  src="/images/hero-fashion.png"
+                  alt="Fashion training at Hosanna School"
+                  fill
+                  sizes="(max-width:1023px) 100vw, 50vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black/40" />
+                <div className="absolute bottom-6 left-6">
+                  <span className="inline-flex items-center rounded-full bg-black/50 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-white/85 backdrop-blur-sm">
+                    Fashion
+                  </span>
+                </div>
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* Additional programmes */}
+      <section className="section-pad bg-white" aria-label="More programmes">
+        <div className="hosanna-container">
+          <FadeUp>
+            <div className="max-w-xl">
+              <p className="eyebrow">More Programmes</p>
+              <h2 className="section-heading mt-3">Even more ways to learn.</h2>
+            </div>
+          </FadeUp>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2">
+            {otherProgrammes.map((p, i) => (
+              <FadeUp key={p.n} delay={i * 70}>
+                <Link
+                  href={p.href}
+                  className="h-card group flex h-full flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
+                >
+                  <span className="font-bold text-5xl leading-none tracking-tight text-ink-900/[0.07] select-none" aria-hidden="true">
+                    {p.n}
+                  </span>
+                  <h3 className="card-heading mt-3 text-ink-900">{p.title}</h3>
+                  <p className="mt-2 flex-1 text-[15px] leading-[1.65] text-ink-600">{p.desc}</p>
+                  <span className="mt-6 inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-widest text-brand-700">
+                    Explore
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+                  </span>
+                </Link>
+              </FadeUp>
+            ))}
           </div>
-        </section>
-      </main>
-    </>
+        </div>
+      </section>
+
+      {/* Learning experience */}
+      <section className="section-pad bg-warm-50" aria-label="The learning experience">
+        <div className="hosanna-container">
+          <FadeUp>
+            <div className="grid gap-14 lg:grid-cols-[1fr_1.4fr] lg:gap-20 lg:items-start">
+              <div>
+                <p className="eyebrow">The Learning Experience</p>
+                <h2 className="section-heading mt-3">
+                  Skills become stronger through practice.
+                </h2>
+                <p className="mt-5 text-[17px] leading-[1.7] text-ink-600">
+                  Every programme at Hosanna is built around practical development rather than simply reading about a skill.
+                </p>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {learningPoints.map((point, i) => (
+                  <div key={point} className="h-card flex gap-4">
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-700" aria-hidden="true" />
+                    <p className="text-[15px] font-medium leading-[1.6] text-ink-900">{point}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <PageCTA
+        eyebrow="Find Your Direction"
+        heading="Choose a skill. Start building your craft."
+        body="Explore the areas of training that interest you, then learn more about admissions and how to begin."
+        primaryLabel="Apply Now"
+        primaryHref="/apply"
+        secondaryLabel="Admissions"
+        secondaryHref="/admissions"
+      />
+    </div>
   );
 }
